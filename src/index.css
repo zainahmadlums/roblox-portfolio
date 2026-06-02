@@ -88,3 +88,52 @@ h1, h2, h3, h4, h5, h6 {
 .portfolio-item:hover .portfolio-item-caption {
   opacity: 1;
 }
+
+/* Navbar Active State */
+.navbar-nav .nav-link.active {
+  color: #fff !important;
+  background-color: var(--primary-teal);
+}
+
+/* Custom 3D Coverflow Carousel */
+.carousel-slide-item {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 70%;
+  height: 100%;
+  transition: all 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-slide-active {
+  transform: translateX(0) scale(1);
+  z-index: 3;
+  opacity: 1;
+}
+
+.carousel-slide-prev {
+  transform: translateX(-40%) scale(0.8);
+  z-index: 2;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.carousel-slide-next {
+  transform: translateX(40%) scale(0.8);
+  z-index: 2;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.carousel-slide-hidden {
+  transform: translateX(0) scale(0.6);
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+}
