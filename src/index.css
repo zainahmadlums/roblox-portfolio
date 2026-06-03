@@ -1,7 +1,7 @@
-/* Nuke whatever Vite put here */
 :root {
-  --primary-teal: #1abc9c;
-  --primary-teal-hover: #15967d;
+  /* Swapped Teal for a sleek, modern Blue */
+  --primary-blue: #2563eb; 
+  --primary-blue-hover: #1d4ed8;
   --bg-darker: #121212;
   --bg-secondary-dark: #1e1e1e;
   --text-muted: #adb5bd;
@@ -17,9 +17,9 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
-/* Force Bootstrap to bend to our dark theme */
+/* Map Bootstrap's primary classes to our new blue */
 .bg-primary {
-  background-color: var(--primary-teal) !important;
+  background-color: var(--primary-blue) !important;
 }
 
 .bg-secondary {
@@ -31,14 +31,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary {
-  background-color: var(--primary-teal);
-  border-color: var(--primary-teal);
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
   color: #fff;
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-teal-hover);
-  border-color: var(--primary-teal-hover);
+  background-color: var(--primary-blue-hover);
+  border-color: var(--primary-blue-hover);
 }
 
 /* Global Section Padding - ripped from the original template so things aren't cramped */
@@ -68,22 +68,23 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
 }
 
-/* Portfolio Hover Logic */
+/* Find this exact block and update it */
 .portfolio-item {
   cursor: pointer;
   position: relative;
   display: block;
-  max-width: 25rem;
+  width: 100%; /* Ripped out max-width: 25rem */
   border-radius: 0.5rem;
   overflow: hidden;
 }
+
 .portfolio-item-caption {
   position: absolute;
   top: 0;
   left: 0;
   transition: all 0.2s ease-in-out;
   opacity: 0;
-  background-color: rgba(26, 188, 156, 0.9);
+  background-color: rgba(0, 0, 0, 0.85); /* Pure black with 85% opacity */
 }
 .portfolio-item:hover .portfolio-item-caption {
   opacity: 1;
@@ -92,7 +93,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Navbar Active State */
 .navbar-nav .nav-link.active {
   color: #fff !important;
-  background-color: var(--primary-teal);
+  background-color: var(--primary-blue);
 }
 
 /* Custom 3D Coverflow Carousel */
@@ -136,4 +137,66 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1;
   opacity: 0;
   pointer-events: none;
+}
+
+/* React Modal Entry and Exit Animations */
+@keyframes modalFadeEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modalFadeExit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.modal-fade-enter {
+  animation: modalFadeEnter 0.3s ease-out forwards;
+}
+
+.modal-fade-exit {
+  animation: modalFadeExit 0.3s ease-in forwards;
+}
+
+/* Smooth out the backdrop vanishing */
+.backdrop-exit {
+  opacity: 0 !important;
+  transition: opacity 0.3s ease-in;
+}
+
+/* Floating animation for the Masthead profile picture */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+.floating-frame {
+  animation: float 6s ease-in-out infinite;
+}
+
+#mainNav {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Contact Card Hover */
+.contact-card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5) !important;
 }

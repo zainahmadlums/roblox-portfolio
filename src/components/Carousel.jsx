@@ -15,13 +15,11 @@ const Carousel = ({ media }) => {
     if (index === currentIndex) return 'carousel-slide-active';
 
     const length = media.length;
-    // Edge case handling for arrays with exactly 2 items
     if (length === 2) {
       if (currentIndex === 0 && index === 1) return 'carousel-slide-next';
       if (currentIndex === 1 && index === 0) return 'carousel-slide-prev';
     }
 
-    // Circular distance calculation
     let offset = index - currentIndex;
     if (offset < -Math.floor(length / 2)) offset += length;
     if (offset > Math.floor(length / 2)) offset -= length;
@@ -32,7 +30,8 @@ const Carousel = ({ media }) => {
   };
 
   return (
-    <div className="position-relative overflow-hidden w-100 bg-dark rounded shadow mb-3" style={{ height: '40vh', minHeight: '300px' }}>
+    // Shaved height down to 45vh and 350px minHeight
+    <div className="position-relative overflow-hidden w-100 bg-dark rounded shadow mb-3" style={{ height: '45vh', minHeight: '350px' }}>
       <div className="d-flex justify-content-center align-items-center h-100 w-100 position-relative">
         {media.map((url, index) => {
           const slideClass = getSlideClass(index);
@@ -40,7 +39,6 @@ const Carousel = ({ media }) => {
             <div 
               key={index} 
               className={`carousel-slide-item ${slideClass}`}
-              // Allow users to click the faded prev/next items to navigate to them
               onClick={() => {
                 if (slideClass === 'carousel-slide-prev') prev();
                 if (slideClass === 'carousel-slide-next') next();
