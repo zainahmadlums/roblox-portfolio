@@ -42,7 +42,7 @@ const FeaturedItem = ({ item, imageRight }) => {
             Featured Project
           </span>
           <h3 className="h1 fw-bold mb-4 text-white text-uppercase">{item.title}</h3>
-          <p className="lead text-light mb-0 fs-5">{item.description}</p>
+          <p className="lead text-light mb-0 fs-4">{item.description}</p>
         </div>
       </div>
     </div>
