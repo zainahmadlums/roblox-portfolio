@@ -9,7 +9,7 @@ const portfolioData = [
     id: 1000, 
     title: 'Pogo Legends Pet System', 
     featured: true,
-    description: 'A fully modular hatching and inventory system handling weighted hatching probabilities and hatch animations, rarities, shiny evolved pets, searching, sorting and filtering, equipping and deletion, boosts application, and player following.',
+    description: 'A fully modular hatching and inventory system handling weighted hatching probabilities and hatch animations, rarities, shiny evolved pets, searching, sorting and filtering, equipping and deletion, boosts, and player following.',
     media: [
       'https://youtu.be/nTGNeXSA6bw'
     ] 

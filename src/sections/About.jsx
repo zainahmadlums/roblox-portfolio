@@ -53,7 +53,7 @@ const About = () => {
           <div className="col-md-5 col-lg-4">
             <div className="p-4 bg-dark rounded-4 h-100 shadow-sm border border-secondary border-opacity-50 text-start">
               {/* Changed fa-server to fa-wrench */}
-              <h4 className="fw-bold mb-3 text-white"><i className="fas fa-wrench text-primary me-2"></i> Updates and Debugging</h4>
+              <h4 className="fw-bold mb-3 text-white"><i className="fas fa-wrench text-primary me-2"></i> Updates & Debugging</h4>
               <ul className="list-unstyled text-light mb-0 fs-5">
                 <li className="mb-2"><i className="fas fa-angle-right text-primary me-2"></i>Add updates to existing codebases</li>
                 <li className="mb-2"><i className="fas fa-angle-right text-primary me-2"></i>Fix game-breaking bugs</li>
