@@ -2,11 +2,13 @@ import { useState } from 'react';
 import PortfolioItem from '../components/PortfolioItem';
 import PortfolioModal from '../components/PortfolioModal';
 import Divider from '../components/Divider';
+import FeaturedItem from '../components/FeaturedItem';
 
 const portfolioData = [
   { 
     id: 1, 
-    title: 'Basketball Animations', 
+    title: 'Basketball Animations',
+    // featured: true, // ADD THIS FLAG HERE
     description: 'Custom-rigged procedural animations for basketball handling, dribbling, and shooting, designed for smooth transitioning and responsiveness.',
     media: [
       'https://thumb.gyazo.com/thumb/1200_w/eyJhbGciOiJIUzI1NiJ9.eyJpbWciOiJfNDRjODkzNDRjYWFjNjUyMDY3OTBlMmFhNDI5MzQ2MzcifQ.r9sOvtK_2WWEkqmG30mA0kpwm5CrQdhrOfet2Hbv7OY-gif.gif',
@@ -18,6 +20,7 @@ const portfolioData = [
   { 
     id: 2, 
     title: 'Basketball System', 
+    // featured: true, // ADD THIS FLAG HERE
     description: 'Full-stack gameplay loop for court logic, physics calculations, and scoring. Network-authoritative to prevent client-side manipulation of the ball.',
     media: [
       'https://thumb.gyazo.com/thumb/1200_w/eyJhbGciOiJIUzI1NiJ9.eyJpbWciOiJfNWM5YWNiNDBmZjc0OTNkZDQyZTc4YTM5OTVkNTY0MmEifQ.8bj5gX2xdChhDhOTGK88bQ2tFXa5hmHPY1FBvSOuCbg-gif.gif',
@@ -56,6 +59,7 @@ const portfolioData = [
   { 
     id: 6, 
     title: 'RPG Skills & Fireball', 
+    // featured: true, // ADD THIS FLAG HERE
     description: 'RPG-style skill progression featuring projectile physics, hit detection, dynamic VFX scaling, and level-gated skill upgrades.',
     media: [
       'https://thumb.gyazo.com/thumb/1200_w/eyJhbGciOiJIUzI1NiJ9.eyJpbWciOiJfYTMwMmQ4MTk1NjQ0ZDkyZmY1ZGU5ODVhZGQzYjFiMDMifQ.BQ_-w0YAm8r6U_zvAD_6h4wo7Fr_dfGSM9zma9zjqZE-gif.gif',
@@ -102,6 +106,8 @@ const portfolioData = [
   { 
     id: 10, 
     title: 'Scavenger System', 
+    
+    // featured: true, // ADD THIS FLAG HERE
     description: 'Spatial loot generation system with proximity-based collection tracking and real-time UI updates for exploration gameplay.',
     media: [
       'https://thumb.gyazo.com/thumb/1200_w/eyJhbGciOiJIUzI1NiJ9.eyJpbWciOiJfMDc5NjI3ZTVkYTQxZTY4MGI0ZTU2YTVjN2ZlYmI5YjUifQ.NDSAqwIPPyCUnHpKtzcc3js8LFz7m_DFnr2dJsOnNdE-gif.gif',
@@ -255,17 +261,44 @@ const portfolioData = [
   }
 ];
 
+
 const Portfolio = () => {
   const [selectedItem, setSelectedItem] = useState(null);
 
+  const featuredItems = portfolioData.filter(item => item.featured);
+  const remainingItems = portfolioData.filter(item => !item.featured);
+
   return (
     <section className="page-section portfolio bg-dark text-white" id="portfolio">
-      <div className="container-fluid px-1">
-        <h2 className="page-section-heading text-center text-uppercase text-white mb-0">Portfolio</h2>
+      
+      {/* --- FEATURED WORK ZONE (Conditionally Rendered) --- */}
+      {featuredItems.length > 0 && (
+        <div className="container-fluid px-2 px-lg-5 mb-4">
+          <h2 className="page-section-heading text-center text-uppercase text-white mb-0">Featured</h2>
+          <Divider light={true} />
+          
+          <div className="mt-4">
+            {featuredItems.map((item, index) => (
+              <FeaturedItem 
+                key={item.id} 
+                item={item} 
+                imageRight={index % 2 !== 0} 
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* --- MORE WORK / PORTFOLIO GRID --- */}
+      {/* If there are no featured items, we drop the mt-5 pt-5 so there isn't a massive awkward gap */}
+      <div className={`container-fluid px-1 ${featuredItems.length > 0 ? 'mt-5 pt-5' : ''}`}>
+        <h2 className="page-section-heading text-center text-uppercase text-white mb-0">
+          {featuredItems.length > 0 ? 'More Work' : 'Portfolio'}
+        </h2>
         <Divider light={true} />
         
-        <div className="row g-1">
-          {portfolioData.map((item) => (
+        <div className="row g-1 mt-4">
+          {remainingItems.map((item) => (
             <PortfolioItem key={item.id} item={item} onSelect={() => setSelectedItem(item)} />
           ))}
         </div>

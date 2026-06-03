@@ -213,3 +213,45 @@ h1, h2, h3, h4, h5, h6 {
     min-height: 350px;
   }
 }
+
+/* Featured Section Floating Effect */
+@keyframes featuredFloat {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.featured-floating-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-floating-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.6) !important;
+}
+
+@media (min-width: 992px) {
+  .animate-float {
+    animation: featuredFloat 5s ease-in-out infinite;
+  }
+}
+
+/* Scroll Fade-Down Animation */
+@keyframes fadeDownScroll {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-down-enter {
+  animation: fadeDownScroll 0.6s ease-out forwards;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
