@@ -30,8 +30,8 @@ const Carousel = ({ media }) => {
   };
 
   return (
-    // Shaved height down to 45vh and 350px minHeight
-    <div className="position-relative overflow-hidden w-100 bg-dark rounded shadow mb-3" style={{ height: '45vh', minHeight: '350px' }}>
+    // Ripped out the inline styles and added portfolio-carousel
+    <div className="portfolio-carousel position-relative overflow-hidden w-100 bg-dark rounded shadow mb-3">
       <div className="d-flex justify-content-center align-items-center h-100 w-100 position-relative">
         {media.map((url, index) => {
           const slideClass = getSlideClass(index);

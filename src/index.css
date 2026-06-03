@@ -200,3 +200,16 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-5px);
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5) !important;
 }
+
+/* Responsive Carousel Height */
+.portfolio-carousel {
+  height: 30vh;
+  min-height: 250px;
+}
+
+@media (min-width: 992px) {
+  .portfolio-carousel {
+    height: 45vh;
+    min-height: 350px;
+  }
+}
