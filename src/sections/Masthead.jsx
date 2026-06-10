@@ -1,4 +1,5 @@
-import profilePic from '../assets/img/profile.png';
+// import profilePic from '../assets/img/profile.png';
+const profilePic = `${import.meta.env.BASE_URL}profile.png`;
 
 const Masthead = () => {
   return (
